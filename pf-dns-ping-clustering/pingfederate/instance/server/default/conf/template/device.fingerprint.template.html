@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- template name: device.fingerprint.template.html -->
+#set( $messageKeyPrefix = "device.fingerprint.template." )
+<html lang="$locale.getLanguage()" dir="ltr">
+<head>
+    <title>Device Fingerprint</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css"/>
+#if($websiteName)
+    <link rel="stylesheet" type="text/css" href="$websiteName"/>
+#end
+    <script type="text/javascript" src="/assets/scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/fingerprint2.js"></script>
+</head>
+<body>
+    <form id="fingerPrintForm" method="POST" action="$url" autocomplete="off">
+	    <input type="hidden" id="fingerPrintFromForm" name="fingerPrintFromForm" value="" />
+		<!--<input type="hidden" name="rememberMe" value="$rememberMe" />-->
+        <input type="hidden" name="$adapterIdField" value="$adapterId" />
+    </form>
+
+    <script type="text/javascript">
+        var options = {
+            "excludes": {
+                "enumerateDevices": true,
+                "userAgent": true,
+                "timezoneOffset": true,
+                "plugins": true
+            }
+        };
+
+        console.log("About to create fingerprint.");
+
+        if (window.requestIdleCallback) {
+            requestIdleCallback(function () {
+                Fingerprint2.get(options, function (components) {
+                    var murmur = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31);
+
+                    document.getElementById("fingerPrintFromForm").value = murmur;
+                    document.getElementById("fingerPrintForm").submit();
+                })
+            })
+        } else {
+            setTimeout(function () {
+                Fingerprint2.get(options, function (components) {
+                    var murmur = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31);
+
+                    document.getElementById("fingerPrintFromForm").value = murmur;
+                    document.getElementById("fingerPrintForm").submit();
+                })
+            }, 500)
+        }
+    </script>
+</body>
+</html>

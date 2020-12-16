@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- template name: machine.type.template.html -->
+#set( $messageKeyPrefix = "machine.type.template." )
+<html lang="$locale.getLanguage()" dir="ltr">
+<head>
+    <title>Machine Type</title>
+    <base href="$PingFedBaseURL"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+</head>
+<body>
+<div class="ping-container ping-signin">
+    <div class="ping-header">
+        <span class="company-logo"><!-- client company logo here --></span>
+        $title
+    </div>
+    <!-- .ping-header -->
+    <div class="ping-body-container">
+        <div>
+            <form method="POST" action="$url" autocomplete="off">
+                <div class="ping-messages">
+                    #if($errorMessageKey)
+                    <div class="ping-error">$templateMessages.getMessage($messageKeyPrefix, $errorMessageKey)</div>
+                    #end
+                </div>
+                <div class="ping-input-label">
+                    $message
+                </div>
+                <br /><br />
+                <div class="ping-input-container">
+                    <input type="radio" id="rememberYes" name="remember" value="Yes" checked="checked" /> Yes
+                    <input type="radio" id="rememberNo" name="remember" value="No" /> No
+                </div>
+                <div class="ping-buttons">
+                    <input type="hidden" name="formSubmitted" value="yes" />
+                    <input type="hidden" name="$adapterIdField" value="$adapterId"/>
+                    <input type="submit" name="submit" class="ping-button normal" value="Submit"/>
+                </div><!-- .ping-buttons -->
+            </form>
+        </div><!-- .ping-body -->
+    </div><!-- .ping-body-container -->
+    <div class="ping-footer-container">
+        <div class="ping-footer">
+            <div class="ping-credits"></div>
+            <div class="ping-copyright">$templateMessages.getMessage("global.footerMessage")</div>
+        </div>
+        <!-- .ping-footer -->
+    </div>
+    <!-- .ping-footer-container -->
+</div><!-- .ping-container -->
+</body>
+</html>
