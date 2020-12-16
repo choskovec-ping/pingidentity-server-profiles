@@ -1,0 +1,54 @@
+body {
+  background-color: #ECECEC;
+  color: #626a72;
+}
+.ping-credits {
+  display: inline-block;
+  vertical-align: middle;
+  height: 16.5px;
+  width: 160px;
+  font-size: 0;
+  color: transparent;
+  background: transparent url("/assets/images/poweredbyping.png") no-repeat;
+  background-size: 160px 16.5px;
+  color: #fff;
+  margin: 10px 0;
+}
+.header {
+  margin-top: 20px;
+  background-color: #575F67;
+  border-radius: 3px 3px 0px 0px;
+  font-size: 1.2em;
+  color: #FCFCFC;
+}
+.body-row {
+  background-color: #FFFFFF;
+}
+.last-row {
+  border-radius: 0px 0px 3px 3px;
+}
+.submit-button {
+  background-color: #2fa0d2;
+  color: #FFFFFF;
+}
+.instruction-row {
+  font-size: 0.9em;
+}
+.method-image {
+  width: 65px;
+  height: 65px;
+}
+.error-message {
+  margin-top: 50px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 5px;
+}
+.blueMessage {
+  color: #005BA9;
+}
+.card {
+  width: 13rem;
+}
+
