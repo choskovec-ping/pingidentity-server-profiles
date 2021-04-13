@@ -21,3 +21,6 @@ export PD_DELEGATOR_PUBLIC_PORT=${PD_DELEGATOR_PUBLIC_PORT:=6443}
 #
 export CERTIFICATE_NICKNAME=${CERTIFICATE_NICKNAME:=ping}
 export MAX_HEAP_SIZE=768m
+
+# added to change the basedn in pingdirectory
+export USER_BASE_DN=dc=com
