@@ -3,7 +3,7 @@
 if test "${RUN_PLAN}" = "START" || test "${SERVER_PROFILE_UPDATE}" = "true"
 then
     echo_yellow "Removing unwanted PF default .jar(s)"
-    rm "${SERVER_BITS_DIR}/server/default/deploy/pf-pingid-idp-adapter-2.6.jar"
-    rm "${SERVER_BITS_DIR}/server/default/deploy/PingIDRadiusPCV-2.5.0.jar"
-    rm "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.48.jar"
+    rm -f "${SERVER_BITS_DIR}/server/default/deploy/pf-pingid-idp-adapter-2.6.jar"
+    rm -f "${SERVER_BITS_DIR}/server/default/deploy/PingIDRadiusPCV-2.5.0.jar"
+    rm -f "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.48.jar"
 fi
