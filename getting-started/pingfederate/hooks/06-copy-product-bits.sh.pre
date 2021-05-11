@@ -10,4 +10,5 @@ then
     #then
         rm -f "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.55.jar"
     #fi
+    ls -lart "${SERVER_BITS_DIR}/server/default/lib"
 fi
