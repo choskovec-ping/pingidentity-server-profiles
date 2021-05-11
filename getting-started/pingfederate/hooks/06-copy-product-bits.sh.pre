@@ -6,9 +6,11 @@ then
     rm -f "${SERVER_BITS_DIR}/server/default/deploy/pf-pingid-idp-adapter-2.6.jar"
     rm -f "${SERVER_BITS_DIR}/server/default/deploy/PingIDRadiusPCV-2.5.0.jar"
     rm -f "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.48.jar"
-    #if [ -e "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar" ]
-    #then
+    if [ -f "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar" ]
+    then
+        echo_yellow "removing pf-authn-api-sdk-1.0.0.55.jar"
         rm -f "${SERVER_BITS_DIR}/server/default/lib/pf-authn-api-sdk-1.0.0.55.jar"
-    #fi
-    ls -lart "${SERVER_BITS_DIR}/server/default/lib"
+    else
+        echo_yellow "not found pf-authn-api-sdk-1.0.0.56.jar"
+    fi
 fi
