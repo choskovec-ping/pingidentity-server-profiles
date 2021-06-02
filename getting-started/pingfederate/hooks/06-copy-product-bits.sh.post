@@ -16,20 +16,24 @@ then
     fi                                                                                                                                                          
     echo_yellow "PingFed version detected ${pfver}"                                                                                                             
     if [[ "$pfver" == "10.2" ]]                                                                                                                                 
-    then                                                                                                                                                        
+    then
+        echo_yellow "Removing files for $pfver"
         fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.55.jar"                                                                                  
         if test -f "$fn"                                                                                                                                         
         then                                                                                                                                                     
             echo_yellow "Removing file $fn"                                                                                                                       
             rm -f "$fn"                                                                                                                                           
         fi                                                                                                                                                       
-    elif [[ "$pfver" == "10.1" ]]                                                                                                                               
+    elif [[ "$pfver" == "10.1" ]]
+        echo_yellow "Removing files for $pfver"
         fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar"                                                                                  
         if test -f "$fn"                                                                                                                                         
         then                                                                                                                                                     
             echo_yellow "Removing file $fn"                                                                                                                       
             rm -f "$fn"                                                                                                                                           
-        fi                                                                                                                                                                                                                                                                                                         
+        fi
+    else
+        echo_yellow "Removing files for $pfver"
     fi                                                                                                                                                          
     echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
 fi
