@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+. "${HOOKS_DIR}/pingcommon.lib.sh"
+if test "${RUN_PLAN}" = "START" || test "${SERVER_PROFILE_UPDATE}" = "true"
+then                                                                                                                                                    
+    echo_yellow "START:Running 06-copy-product-bits.sh.post custom hook"                                                                                        
+    springver=`unzip -p /opt/out/instance/server/default/lib/spring-core.jar META-INF/MANIFEST.MF | grep Implementation-Version | awk -F ":" '{print $2}' | tr -
+    pf102="4.3.29.RELEASE"                                                                                                                                      
+    if [[ "$springver" == "4.3.29.RELEASE" ]]                                                                                                                   
+    then                                                                                                                                                        
+        pfver="10.2"                                                                                                                                              
+    elif [[ "${springver}" == "4.3.24.RELEASE" ]]                                                                                                               
+    then                                                                                                                                                                                                                                                                                                         
+        pfver="10.1"                                                                                                                                              
+    else                                                                                                                                                        
+        pfver="10.0"                                                                                                                                              
+    fi                                                                                                                                                          
+    echo_yellow "PingFed version detected ${pfver}"                                                                                                             
+    if [[ "$pfver" == "10.2" ]]                                                                                                                                 
+    then                                                                                                                                                        
+        fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.55.jar"                                                                                  
+        if test -f "$fn"                                                                                                                                         
+        then                                                                                                                                                     
+            echo_yellow "Removing file $fn"                                                                                                                       
+            rm -f "$fn"                                                                                                                                           
+        fi                                                                                                                                                       
+    elif [[ "$pfver" == "10.1" ]]                                                                                                                               
+        fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar"                                                                                  
+        if test -f "$fn"                                                                                                                                         
+        then                                                                                                                                                     
+            echo_yellow "Removing file $fn"                                                                                                                       
+            rm -f "$fn"                                                                                                                                           
+        fi                                                                                                                                                                                                                                                                                                         
+    fi                                                                                                                                                          
+    echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
+fi
