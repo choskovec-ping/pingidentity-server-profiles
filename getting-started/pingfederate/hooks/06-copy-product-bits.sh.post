@@ -7,7 +7,7 @@ then
     if test -d "/opt/staging/temp-dist"
     then
         echo_yellow "Copying bits to /opt/out/instance/server/default"
-        cp -Rfv "/opt/temp-dist/." "/opt/out/instance/server/default"
+        cp -Rfv "/opt/staging/temp-dist/." "/opt/out/instance/server/default"
     fi                                                                                        
     springver=`unzip -p /opt/out/instance/server/default/lib/spring-core.jar META-INF/MANIFEST.MF | grep Implementation-Version | awk -F ":" '{print $2}' | tr -d "[\r\n ]"`                                                                                                                                
     if [[ "$springver" == "4.3.29.RELEASE" ]]                                                                                                                   
