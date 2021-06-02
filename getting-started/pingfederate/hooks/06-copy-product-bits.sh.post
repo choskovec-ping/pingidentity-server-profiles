@@ -3,8 +3,7 @@
 if test "${RUN_PLAN}" = "START" || test "${SERVER_PROFILE_UPDATE}" = "true"
 then                                                                                                                                                    
     echo_yellow "START:Running 06-copy-product-bits.sh.post custom hook"                                                                                        
-    springver=`unzip -p /opt/out/instance/server/default/lib/spring-core.jar META-INF/MANIFEST.MF | grep Implementation-Version | awk -F ":" '{print $2}' | tr -
-    pf102="4.3.29.RELEASE"                                                                                                                                      
+    springver=`unzip -p /opt/out/instance/server/default/lib/spring-core.jar META-INF/MANIFEST.MF | grep Implementation-Version | awk -F ":" '{print $2}' | tr -d "[\r\n ]"`                                                                                                                                
     if [[ "$springver" == "4.3.29.RELEASE" ]]                                                                                                                   
     then                                                                                                                                                        
         pfver="10.2"                                                                                                                                              
@@ -16,24 +15,20 @@ then
     fi                                                                                                                                                          
     echo_yellow "PingFed version detected ${pfver}"                                                                                                             
     if [[ "$pfver" == "10.2" ]]                                                                                                                                 
-    then
-        echo_yellow "Removing files for $pfver"
+    then                                                                                                                                                        
         fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.55.jar"                                                                                  
         if test -f "$fn"                                                                                                                                         
         then                                                                                                                                                     
             echo_yellow "Removing file $fn"                                                                                                                       
             rm -f "$fn"                                                                                                                                           
         fi                                                                                                                                                       
-    elif [[ "$pfver" == "10.1" ]]
-        echo_yellow "Removing files for $pfver"
+    elif [[ "$pfver" == "10.1" ]]                                                                                                                               
         fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar"                                                                                  
         if test -f "$fn"                                                                                                                                         
         then                                                                                                                                                     
             echo_yellow "Removing file $fn"                                                                                                                       
             rm -f "$fn"                                                                                                                                           
-        fi
-    else
-        echo_yellow "Removing files for $pfver"
+        fi                                                                                                                                                                                                                                                                                                         
     fi                                                                                                                                                          
     echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
 fi
