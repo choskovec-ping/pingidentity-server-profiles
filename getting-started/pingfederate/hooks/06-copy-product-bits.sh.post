@@ -2,7 +2,13 @@
 . "${HOOKS_DIR}/pingcommon.lib.sh"
 if test "${RUN_PLAN}" = "START" || test "${SERVER_PROFILE_UPDATE}" = "true"
 then                                                                                                                                                    
-    echo_yellow "START:Running 06-copy-product-bits.sh.post custom hook"                                                                                        
+    echo_yellow "START:Running 06-copy-product-bits.sh.post custom hook"
+    # Check to see if the source directory exists
+    if test -d "/opt/staging/temp-dist"
+    then
+        echo "Copying bits to /opt/out/instance/server/default"
+        cp -Rf "/opt/temp-dist/." "/opt/out/instance/server/default"
+    fi                                                                                        
     springver=`unzip -p /opt/out/instance/server/default/lib/spring-core.jar META-INF/MANIFEST.MF | grep Implementation-Version | awk -F ":" '{print $2}' | tr -d "[\r\n ]"`                                                                                                                                
     if [[ "$springver" == "4.3.29.RELEASE" ]]                                                                                                                   
     then                                                                                                                                                        
@@ -26,7 +32,7 @@ then
     elif [[ "$pfver" == "10.1" ]]
     then
         echo_yellow "Proccessing for PF $pfver"                                                                                                                                
-        fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar"                                                                                  
+        fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.48.jar"                                                                                  
         if test -f "$fn"                                                                                                                                         
         then                                                                                                                                                     
             echo_yellow "Removing file $fn"                                                                                                                       
