@@ -40,6 +40,13 @@ then
         fi
     else
         echo_yellow "Proccessing for PF $pfver"                                                                                                                                                                                                                                                                                                         
-    fi                                                                                                                                                          
+    fi
+    # check to see if various packages are there and, if so, append the messages files
+    if test -f /opt/out/instance/server/default/deploy/pf-one-time-passcode-adapter-1.0.jar
+    then
+        echo_yellow "Merging one time passcode message files to main message files"
+        cat /opt/out/instance/server/default/conf/language-packs/pingfederate-smtp-otp-message.properties >> /opt/out/instance/server/default/conf/language-packs/pingfederate-email-message.properties
+    fi
+
     echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
 fi
