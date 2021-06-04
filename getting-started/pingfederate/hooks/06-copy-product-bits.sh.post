@@ -61,7 +61,7 @@ then
     if test -f "/opt/out/instance/server/default/deploy/pf-one-time-passcode-adapter-1.0.jar"
     then
         echo_yellow "Copying the template file"
-        cp -p /opt/out/instance/server/default/template/mail-notifications/pingfederate.smtp.otp.adapter.template.html /opt/out/instance/server/default/template/mail-notifications/email.otp.adapter.template.html
+        cp -p /opt/out/instance/server/default/conf/template/mail-notifications/pingfederate.smtp.otp.adapter.template.html /opt/out/instance/server/default/conf/template/mail-notifications/email.otp.adapter.template.html
     fi
 
     echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
