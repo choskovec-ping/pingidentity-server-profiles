@@ -66,7 +66,7 @@ then
         echo "pingfederate.smtp.otp.adapter.otp.required.template.header=Email Authentication" >> /opt/out/instance/server/default/conf/language-packs/pingfederate-otp-adapter-messages.properties                                          
         echo "pingfederate.smtp.adapter.otp.required.template.message=Enter the passcode you received to complete authentication." >> /opt/out/instance/server/default/conf/language-packs/pingfederate-otp-adapter-messages.properties 
         echo "pingfederate.smtp.adapter.otp.required.template.otp.sent.text=Email sent to:" >> /opt/out/instance/server/default/conf/language-packs/pingfederate-otp-adapter-messages.properties                                         
-        echo" pingfederate.smtp.adapter.otp.required.template.resend.button.title=Resend" >> /opt/out/instance/server/default/conf/language-packs/pingfederate-otp-adapter-messages.properties 
+        echo "pingfederate.smtp.adapter.otp.required.template.resend.button.title=Resend" >> /opt/out/instance/server/default/conf/language-packs/pingfederate-otp-adapter-messages.properties 
     fi
 
     echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
