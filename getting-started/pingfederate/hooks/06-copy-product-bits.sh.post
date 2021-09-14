@@ -62,6 +62,7 @@ then
     then
         echo_yellow "Copying the template file"
         cp -p /opt/out/instance/server/default/conf/template/mail-notifications/pingfederate.smtp.otp.adapter.template.html /opt/out/instance/server/default/conf/template/mail-notifications/email.otp.adapter.template.html
+        cat /opt/out/instance/server/default/conf/language-packs/pingfederate-smtp-otp-messages.properties >> /opt/out/instance/server/default/conf/language-packs/pingfederate-email-messages.properties
     fi
 
     echo_yellow "FINISH:Running 06-copy-product-bits.sh.post custom hook"
