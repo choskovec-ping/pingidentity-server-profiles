@@ -28,7 +28,13 @@ then
         then                                                                                                                                                     
             echo_yellow "Removing file $fn"                                                                                                                       
             rm -f "$fn"                                                                                                                                           
-        fi                                                                                                                                                       
+        fi 
+        fn="/opt/out/instance/server/default/lib/pf-authn-api-sdk-1.0.0.56.jar"                                                                                  
+        if test -f "$fn"                                                                                                                                         
+        then                                                                                                                                                     
+            echo_yellow "Removing file $fn"                                                                                                                       
+            rm -f "$fn"                                                                                                                                           
+        fi         
     elif [[ "$pfver" == "10.1" ]]
     then
         echo_yellow "Proccessing for PF $pfver"                                                                                                                                
